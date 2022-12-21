@@ -1,5 +1,6 @@
 export const CHOOSE_PLAYER = 'CHOOSE_PLAYER';
 export const CHOOSE_STATS = 'CHOOSE_STATS';
+export const IS_ACTIVE = 'IS_ACTIVE';
 
 
 
@@ -17,4 +18,15 @@ export const chooseStats = (stats) => {
         type: CHOOSE_STATS,
         payload: stats
     })
+}
+
+export const isActive = (value) => {
+    return({
+        type: IS_ACTIVE,
+        payload: value
+    })
+}
+
+export const fetchData = () => {
+    
 }
