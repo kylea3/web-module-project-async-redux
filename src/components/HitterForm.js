@@ -21,8 +21,9 @@ const HitterForm = (props) => {
 
     const onSubmit = (evt) => {
         evt.preventDefault();
-        choosePlayer(name);
-        chooseStats(stats);
+        console.log(props.choosePlayer(name))
+        props.choosePlayer(name);
+        props.chooseStats(stats);
 
 
     }
@@ -36,14 +37,15 @@ const HitterForm = (props) => {
                 <option  value='L'>Championship Series</option>
                 <option  value='W'>World Series</option>
             </select>
-            <button onSubmit={onSubmit}>Get Stats</button>
+            <button onClick={onSubmit}>Get Stats</button>
         </div>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        playerName: state.playerName
+        playerName: state.playerName,
+        seasonStats: state.seasonStats
     }
 }
 
