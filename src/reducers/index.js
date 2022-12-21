@@ -1,4 +1,4 @@
-import { CHOOSE_PLAYER } from '../actions/index'
+import { CHOOSE_PLAYER, CHOOSE_STATS } from '../actions/index'
 
 const initialState = {
     playerName: '',
@@ -13,6 +13,13 @@ const reducer = (state = initialState, action) =>
             return {
                 ...state,
                 playerName: action.payload
+            }
+        }
+
+        case CHOOSE_STATS: {
+            return {
+                ...state,
+                seasonStats: action.payload
             }
         }
         // case ADD_FAVORITE: {

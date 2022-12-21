@@ -1,4 +1,5 @@
 export const CHOOSE_PLAYER = 'CHOOSE_PLAYER';
+export const CHOOSE_STATS = 'CHOOSE_STATS';
 
 
 
@@ -10,3 +11,10 @@ export const choosePlayer = (name) => {
         payload: name
     });
 }  
+
+export const chooseStats = (stats) => {
+    return ({
+        type: CHOOSE_STATS,
+        payload: stats
+    })
+}

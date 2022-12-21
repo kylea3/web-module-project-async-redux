@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { choosePlayer } from "../actions";
+import { choosePlayer, chooseStats } from "../actions";
 import { connect } from 'react-redux';
 
 const HitterForm = (props) => {
@@ -21,18 +21,22 @@ const HitterForm = (props) => {
 
     const onSubmit = (evt) => {
         evt.preventDefault();
+        choosePlayer(name);
+        chooseStats(stats);
+
 
     }
     return(
         <div className='filter'>
             <input onChange={onChangeName} id="player" placeholder="type player name" />
             <select onClick={onClickSeason}>
+                <option>Select a Stat Type...</option>
                 <option  value='R'>Regular Season</option>
                 <option  value='D'>Division Series</option>
                 <option  value='L'>Championship Series</option>
                 <option  value='W'>World Series</option>
             </select>
-            <button>Get Stats</button>
+            <button onSubmit={onSubmit}>Get Stats</button>
         </div>
     )
 }
@@ -43,4 +47,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { choosePlayer })(HitterForm);
+export default connect(mapStateToProps, { choosePlayer, chooseStats })(HitterForm);
