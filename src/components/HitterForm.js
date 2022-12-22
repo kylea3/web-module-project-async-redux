@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { choosePlayer, chooseStats, isActive } from "../actions";
+import { choosePlayer, chooseStats, isActive } from "../actions/teamStats";
 import { connect } from 'react-redux';
 
 const HitterForm = (props) => {

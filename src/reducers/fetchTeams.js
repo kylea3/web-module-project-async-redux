@@ -1,15 +1,15 @@
-import { FETCH_PLAYER_FAIL, FETCH_PLAYER_START, FETCH_PLAYER_SUCCESS } from '../actions/fetchPlayer'
+import { FETCH_TEAMS_FAIL, FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS } from '../actions/fetchTeams'
 
 const initialState = {
-    player: [],
+    teams: [],
     error: '',
     isFetching: false
 }
 
-const fetchReducer = (state = initialState, action) => {
+export default function fetchTeams(state = initialState, action) {
     switch(action.type) {
         
-        case FETCH_PLAYER_START: {
+        case FETCH_TEAMS_START: {
             return {
                 ...state,
                 isFetching: true,
@@ -17,16 +17,16 @@ const fetchReducer = (state = initialState, action) => {
             }
         }
 
-        case FETCH_PLAYER_SUCCESS: {
+        case FETCH_TEAMS_SUCCESS: {
             return {
                 ...state,
-                player: action.payload,
+                teams: action.payload,
                 isFetching: false,
                 error: ''
             }
         }
 
-        case FETCH_PLAYER_FAIL: {
+        case FETCH_TEAMS_FAIL: {
             return{
                 ...state,
                 error: action.payload
@@ -36,5 +36,3 @@ const fetchReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default fetchReducer;
