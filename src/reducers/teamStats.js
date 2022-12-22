@@ -1,65 +1,86 @@
-import { CHOOSE_PLAYER, CHOOSE_STATS, IS_ACTIVE } from '../actions/teamStats'
+import { TEAM_STATS_START, TEAM_STATS_SUCCESS, TEAM_STATS_FAIL, TEAM_STATS_YEAR } from '../actions/teamStats'
 
 const initialState = {
-    games: {
-        played: {
-           home: 0,
-           away: 0,
-           all: 0 
+    year: '',
+    teamStats: {
+        country: {
+            code: "",
+            flag: "",
+            id: 0,
+            name: ""
         },
-        wins: {
-            home: {
-                total: 0,
-                percentage: 0
+        games: { 
+            loses: {
+                all: {
+                    total: 0, 
+                    percentage: ''
+                },
+                away: {
+                    total: 0, 
+                    percentage: ''
+                },
+                home: {
+                    total: 0, 
+                    percentage: ''
+                }
+            },    
+            played: { 
+                all: 0,
+                away: 0,
+                home: 0
             },
-            away: {
-                total: 0,
-                percentage: 0
-            },
-            all: {
-                total: 0,
-                percentage: 0
+            wins: {
+                all: {
+                    total: 0, 
+                    percentage: ''
+                },
+                away: {
+                    total: 0, 
+                    percentage: ''
+                },
+                home: {
+                    total: 0, 
+                    percentage: ''
+                }
             }
         },
-        loses: {
-            home: {
-                total: 0,
-                percentage: 0
-            },
-            away: {
-                total: 0,
-                percentage: 0
-            },
-            all: {
-                total: 0,
-                percentage: 0
-            }
-        }
-    },    
-    points: {
-        for: {
-            total: {
-                home: 0,
-                away: 0,
-                all: 0
-            },
-            average: {
-                home: 0,
-                away: 0,
-                all: 0
-            }   
+        league: {
+            id: 0,
+            logo: "",
+            name: "",
+            season: 0,
+            type: ""
         },
-        against: {
-            total: {
-                home: 0,
-                away: 0,
-                all: 0
+        points: {
+            against: {
+                average: {
+                    home: '', 
+                    away: '', 
+                    all: ''
+                },
+                total: {
+                    home: 0,
+                    away: 0, 
+                    all: 0
+                }
             },
-            average: {
-                home: 0,
-                away: 0,
-                all: 0
-            } 
+            for: {
+                average:{
+                    home: '', 
+                    away: '', 
+                    all: ''
+                },
+                total: {
+                    home: 0, 
+                    away: 0, 
+                    all: 0
+                }
+            },
+        },
+        team: {
+            id: 0,
+            logo: "",
+            name: ""
         }
     }
 }
@@ -67,38 +88,36 @@ const initialState = {
 export default function teamStats(state = initialState, action) {
     switch(action.type) {
         
-        case CHOOSE_PLAYER: {
+        case TEAM_STATS_START: {
             return {
                 ...state,
-                playerName: action.payload
+                isFetching: true,
+                error: ''
             }
         }
 
-        case CHOOSE_STATS: {
+        case TEAM_STATS_SUCCESS: {
             return {
                 ...state,
-                seasonStats: action.payload
+                teamStats: action.payload,
+                isFetching: false,
+                error: ''
             }
         }
 
-        case IS_ACTIVE: {
+        case TEAM_STATS_FAIL: {
             return{
                 ...state,
-                activePlayer: action.payload
+                error: action.payload
             }
         }
-        // case ADD_FAVORITE: {
-        //     return {
-        //         ...state,
-        //         favorites: [...state.favorites, action.payload]
-        //     }
-        // }
-        // case REMOVE_FAVORITE: {
-        //     return {
-        //         ...state,
-        //         favorites: state.favorites.filter(item => item.id !== action.payload)
-        //     }
-        // }
+
+        case TEAM_STATS_YEAR: {
+            return {
+                ...state,
+                year: action.payload
+            }
+        }
         default:
             return state;
     }
