@@ -203,7 +203,8 @@ const mapStateToProps = state => {
     return {
         year: state.teamStats.year,
         teamStats: state.teamStats.teamStats,
-        isActive: state.teamStats.isActive
+        isActive: state.teamStats.isActive,
+        currentTeam: state.fetchTeams.currentTeam
     }
 }
 

@@ -3,6 +3,7 @@ import axios from "axios";
 export const FETCH_TEAMS_START = 'FETCH_TEAMS_START';
 export const FETCH_TEAMS_FAIL = 'FETCH_TEAMS_FAIL';
 export const FETCH_TEAMS_SUCCESS = 'FETCH_TEAMS_SUCCESS';
+export const SET_CURRENT_TEAM = 'SET_CURRENT_TEAM';
 
 const options = {
   method: 'GET',
@@ -28,5 +29,11 @@ const options = {
 export const getTeams = (data) => {
   return {
     type: FETCH_TEAMS_SUCCESS, payload: data
+  }
+}
+
+export const setCurrentTeam = (value) => {
+  return {
+    type: SET_CURRENT_TEAM, payload: value
   }
 }

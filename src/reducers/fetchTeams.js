@@ -1,9 +1,10 @@
-import { FETCH_TEAMS_FAIL, FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS } from '../actions/fetchTeams'
+import { FETCH_TEAMS_FAIL, FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS, SET_CURRENT_TEAM } from '../actions/fetchTeams'
 
 const initialState = {
     teams: [],
     error: '',
-    isFetching: false
+    isFetching: false,
+    currentTeam: ''
 }
 
 export default function fetchTeams(state = initialState, action) {
@@ -30,6 +31,13 @@ export default function fetchTeams(state = initialState, action) {
             return{
                 ...state,
                 error: action.payload
+            }
+        }
+
+        case SET_CURRENT_TEAM: {
+            return{
+                ...state,
+                currentTeam: action.payload
             }
         }
         default:

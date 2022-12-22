@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { getTeams } from "../actions/fetchTeams";
+import { getTeams, setCurrentTeam } from "../actions/fetchTeams";
 import { connect } from 'react-redux';
 import response from "../data";
 import fetchTeams from "../reducers/fetchTeams";
@@ -8,11 +8,15 @@ import '../styling/TeamList.css'
 
 
 const TeamList = (props) => {
-    const { getTeams, team } =  props;
+    const { getTeams, team, setCurrentTeam } =  props;
 
     const onSubmit = (evt) => {
         evt.preventDefault();
         getTeams(response);
+    }
+
+    const onClickTeam = (evt) => {
+        setCurrentTeam(evt.target.id)
     }
     const options = {
         method: 'GET',
@@ -41,7 +45,7 @@ const TeamList = (props) => {
                     <div className="teams" key={team.id}>
                         <h3>{team.name}</h3>
                         <img src={team.logo} />
-                        <button>See Team Stats</button>
+                        <button onClick={onClickTeam} id={team.id}>See Team Stats</button>
                     </div>
                 )
             })}
@@ -51,8 +55,9 @@ const TeamList = (props) => {
 
 const mapStateToProps = state => {
     return {
-        team: state.fetchTeams.teams
+        team: state.fetchTeams.teams,
+        currentTeam: state.fetchTeams.currentTeam
     }
 }
 
-export default connect(mapStateToProps, { getTeams })(TeamList);
+export default connect(mapStateToProps, { getTeams, setCurrentTeam })(TeamList);
