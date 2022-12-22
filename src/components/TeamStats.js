@@ -6,7 +6,7 @@ import response from "../teamStatsData"
 import '../styling/TeamStats.css'
 
 const TeamStats = (props) => {
-    const { getTeamStats, getYear, teamStats, isActive, setIsActive } =  props;
+    const { getTeamStats, getYear, teamStats, isActive, setIsActive, team, currentTeam } =  props;
     
     const onClickActivity = (evt) => {
         getYear(evt.target.value)
@@ -38,6 +38,13 @@ const TeamStats = (props) => {
 
     return(
         <>
+        {team.filter(team => team.id === currentTeam).map(filteredTeam => {
+            return (
+                <div>
+                    <img src={filteredTeam.logo} />
+                </div>
+            )
+        })}
         <div className='filter'>
             <select onClick={onClickActivity}>
                 <option>Select Year</option>
@@ -204,7 +211,8 @@ const mapStateToProps = state => {
         year: state.teamStats.year,
         teamStats: state.teamStats.teamStats,
         isActive: state.teamStats.isActive,
-        currentTeam: state.fetchTeams.currentTeam
+        currentTeam: state.fetchTeams.currentTeam,
+        team: state.fetchTeams.teams,
     }
 }
 

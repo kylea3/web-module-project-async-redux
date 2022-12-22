@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import response from "../data";
 import fetchTeams from "../reducers/fetchTeams";
 import '../styling/TeamList.css'
+import { Link } from "react-router-dom";
 
 
 const TeamList = (props) => {
@@ -45,7 +46,7 @@ const TeamList = (props) => {
                     <div className="teams" key={team.id}>
                         <h3>{team.name}</h3>
                         <img src={team.logo} />
-                        <button onClick={onClickTeam} id={team.id}>See Team Stats</button>
+                        <Link to='teamstats'><button onClick={onClickTeam} id={team.id}>See Team Stats</button></Link>
                     </div>
                 )
             })}
