@@ -1,7 +1,8 @@
-import { TEAM_STATS_START, TEAM_STATS_SUCCESS, TEAM_STATS_FAIL, TEAM_STATS_YEAR } from '../actions/teamStats'
+import { TEAM_STATS_START, TEAM_STATS_SUCCESS, TEAM_STATS_FAIL, TEAM_STATS_YEAR, TEAM_STATS_ISACTIVE } from '../actions/teamStats'
 
 const initialState = {
     year: '',
+    isActive: false,
     teamStats: {
         country: {
             code: "",
@@ -118,6 +119,14 @@ export default function teamStats(state = initialState, action) {
                 year: action.payload
             }
         }
+
+        case TEAM_STATS_ISACTIVE: {
+            return {
+                ...state,
+                isActive: !state.isActive
+            }
+        }
+
         default:
             return state;
     }

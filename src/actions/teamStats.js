@@ -2,7 +2,8 @@ import axios from "axios";
 export const TEAM_STATS_START = 'TEAM_STATS_START';
 export const TEAM_STATS_FAIL = 'TEAM_STATS_FAIL';
 export const TEAM_STATS_SUCCESS = 'TEAM_STATS_SUCCESS';
-export const TEAM_STATS_YEAR = 'TEAM_STATS_YEAR'
+export const TEAM_STATS_YEAR = 'TEAM_STATS_YEAR';
+export const TEAM_STATS_ISACTIVE = 'TEAM_STATS_ISACTIVE'
 
 const options = {
   method: 'GET',
@@ -34,5 +35,11 @@ export const getTeamStats = (data) => {
 export const getYear = (year) => {
     return {
         type: TEAM_STATS_YEAR, payload: year
+    }
+}
+
+export const setIsActive = () => {
+    return {
+        type: TEAM_STATS_ISACTIVE
     }
 }

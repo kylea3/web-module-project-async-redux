@@ -79,3 +79,5 @@ const response = {
         name: "Boston Red Sox"
     }
 }
+
+export default response;
