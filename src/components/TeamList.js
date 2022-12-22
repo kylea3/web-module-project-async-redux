@@ -4,6 +4,8 @@ import { getTeams } from "../actions/fetchTeams";
 import { connect } from 'react-redux';
 import response from "../data";
 import fetchTeams from "../reducers/fetchTeams";
+import '../styling/TeamList.css'
+
 
 const TeamList = (props) => {
     const { getTeams, team } =  props;
@@ -36,7 +38,7 @@ const TeamList = (props) => {
             <button onClick={onSubmit}>Load Teams</button>
             {team.map(team => {
                 return (
-                    <div key={team.id}>
+                    <div className="teams" key={team.id}>
                         <h3>{team.name}</h3>
                         <img src={team.logo} />
                         <button>See Team Stats</button>
