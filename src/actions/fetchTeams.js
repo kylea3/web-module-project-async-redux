@@ -15,22 +15,22 @@ const options = {
   }
 };
 
-// export const getTeams = () => dispatch => {
-//     dispatch({ type: FETCH_TEAMS_START });
-//     axios.request(options)
-//         .then(res => 
-//             dispatch({ type: FETCH_TEAMS_SUCCESS, payload: res.data.response })
-//         )
-//         .catch(err => 
-//             dispatch({ type: FETCH_TEAMS_FAIL, payload: err})
-//         );
-// }
-
-export const getTeams = (data) => {
-  return {
-    type: FETCH_TEAMS_SUCCESS, payload: data
-  }
+export const getTeams = () => dispatch => {
+    dispatch({ type: FETCH_TEAMS_START });
+    axios.request(options)
+        .then(res => 
+            dispatch({ type: FETCH_TEAMS_SUCCESS, payload: res.data.response })
+        )
+        .catch(err => 
+            dispatch({ type: FETCH_TEAMS_FAIL, payload: err})
+        );
 }
+
+// export const getTeams = (data) => {
+//   return {
+//     type: FETCH_TEAMS_SUCCESS, payload: data
+//   }
+// }
 
 export const setCurrentTeam = (value) => {
   return {

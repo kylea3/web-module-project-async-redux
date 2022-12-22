@@ -39,6 +39,7 @@ const TeamStats = (props) => {
     return(
         <>
         {team.filter(team => team.id === currentTeam).map(filteredTeam => {
+            console.log(filteredTeam);
             return (
                 <div>
                     <img src={filteredTeam.logo} />

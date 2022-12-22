@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import HitterForm from './components/TeamStats'
 import TeamList from './components/TeamList';
 import TeamStats from './components/TeamStats';
 import { Route } from 'react-router-dom';

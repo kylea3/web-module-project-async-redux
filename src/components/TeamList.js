@@ -28,14 +28,15 @@ const TeamList = (props) => {
           'X-RapidAPI-Host': 'api-baseball.p.rapidapi.com'
         }
       };
-    // useEffect(() => {
-    //     // getTeams();
-    //   axios.request(options)
-    //     .then(res => 
-    //         console.log(res))
-    //     .catch(err => 
-    //         console.error(err))
-    // }, []);
+
+    useEffect(() => {
+        getTeams();
+      axios.request(options)
+        .then(res => 
+            console.log(res))
+        .catch(err => 
+            console.error(err))
+    }, []);
 
     return(
         <div>
